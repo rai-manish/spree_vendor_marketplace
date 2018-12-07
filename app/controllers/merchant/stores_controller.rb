@@ -53,7 +53,8 @@ class Merchant::StoresController < Merchant::ApplicationController
     end
     # @taxons = Spree::Taxon.where(depth: 1, parent_id: Spree::Taxon.where(name: "Categories").first.id)
     # @taxons = Spree::Taxon.where(parent_id: nil)
-    @taxons = Spree::Taxon.where(parent_id: Spree::Taxon.where(name: "Categories").first.id)
+    # @taxons = Spree::Taxon.where(parent_id: Spree::Taxon.where(name: "Categories").first.id)
+    @taxons = Spree::Taxon.all
   end
 
   # POST /stores
