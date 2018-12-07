@@ -13,7 +13,7 @@ class Merchant::ApplicationController < ActionController::Base
   helper Spree::BaseHelper
   helper Spree::OrdersHelper
   helper Spree::ProductsHelper
-  helper Spree::StoreHelper
+  # helper Spree::StoreHelper
   helper Spree::TaxonsHelper
 
   before_action :load_initials
@@ -21,7 +21,8 @@ class Merchant::ApplicationController < ActionController::Base
   layout 'merchant'
 
   def load_initials
-    @categories = Spree::Taxon.includes(children: {children: :children}).where(name: "Category").first.try(:children)
+    # @categories = Spree::Taxon.includes(children: {children: :children}).where(name: "Category").first.try(:children)
+    @categories = Spree::Taxon.all
     @price_index_bitcoin = price_index_bitcoin
   end
 

@@ -34,7 +34,8 @@ class Merchant::StoresController < Merchant::ApplicationController
           redirect_to current_spree_user.stores.first
         else
           @store = Merchant::Store.new()
-          @taxons = Spree::Taxon.where(parent_id: Spree::Taxon.where(name: "Categories").first.id)
+          # @taxons = Spree::Taxon.where(parent_id: Spree::Taxon.where(name: "Categories").first.id)
+          @taxons = Spree::Taxon.all
         end
       else
         redirect_to spree.root_path, notice: "you are not logged in"
@@ -65,7 +66,10 @@ class Merchant::StoresController < Merchant::ApplicationController
         format.html { redirect_to merchant_store_url(id: @store.slug, anchor: "map"), notice: 'Store approval is pending' }
         format.json { render action: 'show', status: :created, location: @store }
       else
-        @taxons = Spree::Taxon.where(depth: 1, parent_id: Spree::Taxon.where(name: "Categories").first.id)
+        # @taxons = Spree::Taxon.where(depth: 1, parent_id: Spree::Taxon.where(name: "Categories").first.id)
+        @taxons = Spree::Taxon.all 
+        p "1111"*2
+        p @store.errors.full_messages.join(', ')
         format.html { render action: 'new' }
         format.json { render json: @store.errors, status: :unprocessable_entity }
       end
