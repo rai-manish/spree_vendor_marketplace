@@ -26,13 +26,13 @@ class Merchant::ApplicationController < ActionController::Base
     @price_index_bitcoin = price_index_bitcoin
   end
 
-  def price_index_bitcoin
-    if ["staging", "production"].include?(Rails.env)
-      JSON.parse(open('https://coinbase.com/api/v1/prices/spot_rate').read)["amount"].to_f
-    else
-      623.5
-    end
-  end
+  # def price_index_bitcoin
+  #   if ["staging", "production"].include?(Rails.env)
+  #     JSON.parse(open('https://coinbase.com/api/v1/prices/spot_rate').read)["amount"].to_f
+  #   else
+  #     623.5
+  #   end
+  # end
 
   def is_active_store
     if current_spree_user && (current_spree_user.stores && !current_spree_user.stores.first.active)
