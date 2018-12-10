@@ -23,7 +23,7 @@ class Merchant::ApplicationController < ActionController::Base
   def load_initials
     # @categories = Spree::Taxon.includes(children: {children: :children}).where(name: "Category").first.try(:children)
     @categories = Spree::Taxon.all
-    @price_index_bitcoin = price_index_bitcoin
+    # @price_index_bitcoin = price_index_bitcoin
   end
 
   # def price_index_bitcoin
